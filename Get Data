@@ -1,0 +1,29 @@
+# Active Students by Country
+SELECT
+	# Construct JSON Object
+	GROUP_CONCAT(
+		'{"country": "', country, '","students": ', students, '}' SEPARATOR ','
+		) as courses
+
+
+FROM
+	(
+	# Build Table
+	SELECT 
+		COUNT(*)
+			AS
+				students,
+				country
+		FROM 
+			stu_program,
+			address
+		WHERE
+			address.personID = stu_program.stuID
+			AND
+			currStatus
+				IN
+					('A','P', 'L')
+		GROUP BY country
+	)
+
+z
