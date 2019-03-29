@@ -1,0 +1,30 @@
+# Active Students by State Florida
+SELECT
+	# Construct JSON Object
+	GROUP_CONCAT(
+		'{"state": "', state, '","students": ', students, '}' SEPARATOR ','
+		) as courses
+
+
+FROM
+	(
+	# Build Table
+SELECT 
+		COUNT(*)
+			AS
+				students,
+				state
+		FROM 
+			stu_program,
+			address
+		WHERE
+			address.personID = stu_program.stuID
+			AND
+			currStatus
+				IN
+					('A','P', 'L')
+			AND
+			state = 'FL'
+	)
+
+z
