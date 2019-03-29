@@ -3,7 +3,7 @@ SELECT
 	# Construct JSON Object
 	GROUP_CONCAT(
 		'{"state": "', state, '","students": ', students, '}' SEPARATOR ','
-		) as courses
+		) as lineItems
 
 
 FROM
